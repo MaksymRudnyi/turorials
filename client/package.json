@@ -7,10 +7,14 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "css-loader": "^6.5.1",
+    "express": "4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
     "toastify": "^2.0.1",
     "web-vitals": "^1.0.1"
   },
@@ -18,7 +22,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
+    "dev:start": "nodemon ./server-build/index.js",
+    "dev": "npm-run-all --parallel build dev:*"
   },
   "eslintConfig": {
     "extends": [
@@ -37,5 +44,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "7.10.4",
+    "@babel/preset-env": "7.10.4",
+    "@babel/preset-react": "7.10.4",
+    "babel-loader": "8.1.0",
+    "nodemon": "2.0.4",
+    "npm-run-all": "4.1.5",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.3.12",
+    "webpack-node-externals": "1.7.2"
   }
 }
