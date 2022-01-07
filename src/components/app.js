@@ -1,16 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
+
+import { Counter } from "./counter";
+import { Post } from "./post";
 
 import './styles.scss';
 
 export const App = () => {
-    console.log('app');
-    const [count, setCount] = useState(0);
 
     return (
         <div className="body">
-            App
-            <div>Clicked: {count}</div>
-            <button onClick={() => setCount(count + 1)}>Click</button>
+            <Routes>
+                <Route path="/" element={<h1>SSR</h1>} />
+                <Route path="counter" element={<Counter />} />
+                <Route path="post" element={<Post />} />
+            </Routes>
+
+            <Link to="/">home</Link> |{" "}
+            <Link to="/post">Post</Link> |{" "}
+            <Link to="/counter">Counter</Link>
         </div>
     )
 };

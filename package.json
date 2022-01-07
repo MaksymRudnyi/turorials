@@ -11,7 +11,8 @@
     "@babel/register": "^7.16.7",
     "ignore-styles": "^5.0.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
