@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Switch,
+    Routes,
     Route,
     Link
 } from "react-router-dom";
@@ -14,11 +14,11 @@ export const App = () => {
 
     return (
         <div className="body">
-            <Switch>
-                <Route path="/counter"><Counter/></Route>
-                <Route path="/post"><Post/></Route>
-                <Route path="/">SSR</Route>
-            </Switch>
+            <Routes>
+                <Route path="counter" element={<Counter/>}/>
+                <Route path="/post" element={<Post/>}/>
+                <Route path="/" element={<h1>SSR</h1>}/>
+            </Routes>
 
             <Link to="/">home</Link> |{" "}
             <Link to="/post">Post</Link> |{" "}
