@@ -4,9 +4,12 @@
   "version": "1.0.0",
   "scripts": {
     "start": "NODE_ENV=development webpack serve",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "start:ssr": "node server"
   },
   "dependencies": {
+    "@babel/register": "^7.16.7",
+    "ignore-styles": "^5.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

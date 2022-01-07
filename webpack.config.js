@@ -10,8 +10,10 @@ module.exports = {
     //  webpack optimisation mode
     mode: ( 'development' === process.env.NODE_ENV ? 'development' : 'production' ),
 
-    entry: [
-        './src/index.js', // react
+    entry: 'development' === process.env.NODE_ENV ? [
+        './src/index.dev.js', // in development
+    ] : [
+        './src/index.prod.js', // in production
     ],
 
     output: {
