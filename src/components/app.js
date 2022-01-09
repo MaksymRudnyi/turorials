@@ -1,28 +1,23 @@
 import React from 'react';
 import {
-    Routes,
-    Route,
     Link
 } from "react-router-dom";
 
-import { Counter } from "./counter";
-import { Post } from "./post";
+import { renderRoutes } from 'react-router-config';
+// import routes from "./routes";
 
 import './styles.scss';
 
-export const App = () => {
-
+export const App = ({ route }) => {
     return (
         <div className="body">
-            <Routes>
-                <Route path="counter" element={<Counter/>}/>
-                <Route path="/post" element={<Post/>}/>
-                <Route path="/" element={<h1>SSR</h1>}/>
-            </Routes>
-
             <Link to="/">home</Link> |{" "}
             <Link to="/post">Post</Link> |{" "}
             <Link to="/counter">Counter</Link>
+
+            <div>
+                {renderRoutes(route.routes)}
+            </div>
         </div>
     )
 };
