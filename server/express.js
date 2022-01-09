@@ -6,8 +6,8 @@ const path = require( 'path' );
 
 const React = require( 'react' );
 const ReactDOMServer = require( 'react-dom/server' );
-import { StaticRouter } from "react-router-dom";
-import routes from "../src/components/routes";
+import { StaticRouter } from "react-router-dom/server";
+// import routes from "../src/components/routes";
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use( '*', ( req, res ) => {
 
     console.log(req.originalUrl)
 
-    let appHTML = ReactDOMServer.renderToString( <StaticRouter location={req.originalUrl } context={context}>{renderRoutes(routes)}</StaticRouter> );
+    let appHTML = ReactDOMServer.renderToString( <StaticRouter location={req.originalUrl } context={context}><App/></StaticRouter> );
 
     indexHTML = indexHTML.replace( '<div id="app"></div>', `<div id="app">${appHTML}</div>` );
 

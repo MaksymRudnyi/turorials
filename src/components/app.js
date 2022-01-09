@@ -1,14 +1,16 @@
 import React from 'react';
 import {
-    Link
+    Link,
+    useRoutes
 } from "react-router-dom";
 
-import { renderRoutes } from 'react-router-config';
-// import routes from "./routes";
+// import { renderRoutes } from 'react-router-config';
+import routes from "./routes";
 
 import './styles.scss';
 
 export const App = ({ route }) => {
+    const element = useRoutes(routes);
     return (
         <div className="body">
             <Link to="/">home</Link> |{" "}
@@ -16,7 +18,7 @@ export const App = ({ route }) => {
             <Link to="/counter">Counter</Link>
 
             <div>
-                {renderRoutes(route.routes)}
+                {element}
             </div>
         </div>
     )
