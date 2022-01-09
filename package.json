@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/register": "^7.16.7",
+    "axios": "^0.24.0",
     "ignore-styles": "^5.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
