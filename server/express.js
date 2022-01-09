@@ -6,31 +6,48 @@ const path = require( 'path' );
 
 const React = require( 'react' );
 const ReactDOMServer = require( 'react-dom/server' );
+import {matchRoutes} from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-// import routes from "../src/components/routes";
+import appRoutes from "../src/components/routes";
+import createStore from '../src/components/store';
+import renderer from './renderer';
 
 const app = express();
 
-const { App } = require( '../src/components/app' );
+// const { App } = require( '../src/components/app' );
 
 app.get( /\.(js|css|map|ico)$/, express.static( path.resolve( __dirname, '../dist' ) ) );
 
 app.use( '*', ( req, res ) => {
+    const routes = matchRoutes(appRoutes, req.originalUrl);
+
     const context = {};
-    let indexHTML = fs.readFileSync( path.resolve( __dirname, '../dist/index.html' ), {
-        encoding: 'utf8',
-    } );
+    const store = createStore();
 
-    console.log(req.originalUrl)
+    const promises = routes
+        ?.map(({ route }) => {
+            return route.loadData ? route.loadData(store) : null;
+        })
+        ?.map(promise => {
+            if (promise) {
+                return new Promise((resolve, reject) => {
+                    promise.then(resolve).catch(reject);
+                });
+            }
+            return null;
+        });
 
-    let appHTML = ReactDOMServer.renderToString( <StaticRouter location={req.originalUrl } context={context}><App/></StaticRouter> );
+    Promise.all(promises).then(() => {
+        // const context = {};
+        // const content = renderer(req, store, context);
+        const html = renderer(req, store, context);
 
-    indexHTML = indexHTML.replace( '<div id="app"></div>', `<div id="app">${appHTML}</div>` );
+        res.contentType( 'text/html' );
+        res.status( 200 );
 
-    res.contentType( 'text/html' );
-    res.status( 200 );
+        res.send( html );
+    });
 
-    return res.send( indexHTML );
 
 } );
 

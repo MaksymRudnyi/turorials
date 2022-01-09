@@ -9,7 +9,7 @@ import routes from "./routes";
 
 import './styles.scss';
 
-export const App = ({ route }) => {
+export const App = () => {
     const element = useRoutes(routes);
     return (
         <div className="body">
