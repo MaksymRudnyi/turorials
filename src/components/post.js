@@ -1,25 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom'
 
 import { fetchArticles } from '../actions';
 
 export const Post = ({ articles, fetchArticles, ...rest}) => {
-    console.log('rest: ', rest);
+    const { id } = useParams();
+
     useEffect(() => {
-        fetchArticles();
-    }, [fetchArticles]);
+        fetchArticles(id);
+    }, [fetchArticles, id]);
 
     return (
         <div>
             post
-            <h1>{articles[0]?.title}</h1>
-            <h2>{articles[0]?.body}</h2>
+            <h1>{articles?.title}</h1>
+            <h2>{articles?.overview}</h2>
         </div>
     )
 };
 
 const mapStateToProps = (state, props) => {
-    console.log('my props: ', props)
     return {
         articles: state.articles,
         ...props

@@ -26,7 +26,7 @@ app.use( '*', ( req, res ) => {
 
     const promises = routes
         ?.map(({ route }) => {
-            return route.loadData ? route.loadData(store) : null;
+            return route.loadData ? route.loadData(store, req.originalUrl) : null;
         })
         ?.map(promise => {
             if (promise) {
