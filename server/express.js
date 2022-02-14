@@ -52,7 +52,11 @@ app.use( '*', ( req, res ) => {
         }
 
         res.send( html );
-    });
+    })
+        .catch(() => {
+            res.status(404);
+            res.send('no data')
+        });
 
 
 } );
