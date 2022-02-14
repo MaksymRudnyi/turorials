@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { fetchArticles } from '../actions';
 
-export const Post = ({ articles, fetchArticles}) => {
+export const Post = ({ articles, fetchArticles, ...rest}) => {
+    console.log('rest: ', rest);
     useEffect(() => {
         fetchArticles();
     }, [fetchArticles]);
@@ -17,9 +18,11 @@ export const Post = ({ articles, fetchArticles}) => {
     )
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
+    console.log('my props: ', props)
     return {
-        articles: state.articles
+        articles: state.articles,
+        ...props
     };
 };
 

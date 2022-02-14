@@ -2,6 +2,7 @@ import React from 'react';
 import {Counter} from "./counter";
 import Post from "./post";
 import {Home} from './home';
+import NotFound from './notFound'
 
 export default [
     {
@@ -18,5 +19,9 @@ export default [
         exact: true,
         element: <Post.component/>,
         loadData: Post.loadData
+    },
+    {
+        path: '*',
+        element: <NotFound.component/>
     }
 ]

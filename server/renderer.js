@@ -13,8 +13,6 @@ export default (req, store, context) => {
         encoding: 'utf8',
     } );
 
-    console.log(req.originalUrl);
-
     let appHTML = ReactDOMServer.renderToString(
         <Provider store={store}>
             <StaticRouter location={req.originalUrl } context={context}>
