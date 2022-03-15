@@ -3,25 +3,67 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema} = require('graphql');
 
 const schema = buildSchema(`
+    type Message {
+        id: ID!
+        content: String
+        author: String
+    }
+    
+    input MessageInput {
+        content: String
+        author: String
+    }
+  
     type Mutation {
-        setMessage(message: String): String
+        createMessage(input: MessageInput): Message
+        updateMessage(id: ID!, input: MessageInput): Message
     }
     
     type Query {
-        getMessage: String
+        getMessage(id: ID!): Message
+        messages: [Message]
     }
 `);
+
+class Message {
+    constructor(id, {content, author}) {
+        this.id = id;
+        this.content = content;
+        this.author = author;
+    }
+}
+
 
 const fakeDatabase = {};
 
 const root = {
-    setMessage: ({ message }) => {
-        fakeDatabase.message = message;
+    createMessage: ({ input }) => {
+        const id = require('crypto').randomBytes(10).toString('hex');
 
-        return message
+        fakeDatabase[id] = input;
+
+        return new Message(id, input);
     },
 
-    getMessage: () => fakeDatabase.message
+    updateMessage: ({ id, input }) => {
+        if (!fakeDatabase[id]) {
+            throw new Error('no message with id: ' + id);
+        }
+
+        fakeDatabase[id] = input;
+
+        return new Message(id, input);
+    },
+
+    getMessage: ({ id }) => {
+        if (!fakeDatabase[id]) {
+            throw new Error('no message with id: ' + id);
+        }
+
+        return new Message(id, fakeDatabase[id])
+    },
+
+    messages: () => Object.keys(fakeDatabase).map((key) => new Message(key, fakeDatabase[key]))
 };
 
 const app = express();
