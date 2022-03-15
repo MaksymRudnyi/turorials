@@ -3,63 +3,25 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema} = require('graphql');
 
 const schema = buildSchema(`
-    type RandomDie {
-        roll(numRolls: Int!): [Int]
-        numSides: Int
-        rollOnce: Int
-        counter: Int
-        increment: Int
+    type Mutation {
+        setMessage(message: String): String
     }
     
     type Query {
-        hello: String
-        quoteOfTheDay: String
-        random: Float
-        rollThreeDice: [Int]
-        rollDice(numDice: Int!, numSides: Int): [Int]
-        getDie(numSides: Int): RandomDie
+        getMessage: String
     }
 `);
 
-class RandomDie {
-    static counter;
-    constructor(numSides = 6) {
-        this.numSides = numSides;
-        // this.counter = 0;
-    }
-
-    increment() {
-        return ++RandomDie.counter
-    }
-
-    rollOnce() {
-        return 1 + Math.floor(Math.random() * this.numSides);
-    }
-
-    roll({ numRolls }) {
-        var output = [];
-        for (var i = 0; i < numRolls; i++) {
-            output.push(this.rollOnce());
-        }
-        return output;
-    }
-}
+const fakeDatabase = {};
 
 const root = {
-    hello: () => 'Hello world.',
-    quoteOfTheDay: () => Math.random() < .5 ? 'Take is easy' : 'Salvation lies',
-    random: Math.random,
-    rollThreeDice: () => [1, 2, 3].map(_ => 1 + Math.floor(Math.random() * 6)),
-    rollDice: ({ numDice, numSides = 6 }) => {
-        const output = [];
+    setMessage: ({ message }) => {
+        fakeDatabase.message = message;
 
-        for (let i = 0; i < numDice; i++) {
-            output.push(1 + Math.floor(Math.random() * numSides))
-        }
-
-        return output
+        return message
     },
-    getDie: ({ numSides }) => new RandomDie(numSides)
+
+    getMessage: () => fakeDatabase.message
 };
 
 const app = express();
