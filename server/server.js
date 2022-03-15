@@ -1,13 +1,19 @@
-const express = require('express');
-const cors = require('cors');
+const { graphql, buildSchema} = require('graphql');
 
-const app = express();
+const schema = buildSchema(`
+    type Query {
+        hello: String
+    }
+`);
 
-app.use(cors());
-app.use(express.static('public'));
+const root = {
+    hello: () => 'Hello world.'
+};
 
-app.post('/demo', (req, res) => res.status(200).send({demo: true}));
-
-app.listen(8000, () => {
-    console.log('App is running on port 8000')
-});
+graphql({
+    schema,
+    source: `{ hello }`,
+    rootValue: root
+}).then((response) => {
+    console.log(response)
+})
