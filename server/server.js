@@ -1,6 +1,7 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema} = require('graphql');
+const axios = require('axios');
 
 const schema = buildSchema(`
     type Message {
@@ -22,6 +23,8 @@ const schema = buildSchema(`
     type Query {
         getMessage(id: ID!): Message
         messages: [Message]
+        ip(text: String): String
+        randomText: String
     }
 `);
 
@@ -63,7 +66,16 @@ const root = {
         return new Message(id, fakeDatabase[id])
     },
 
-    messages: () => Object.keys(fakeDatabase).map((key) => new Message(key, fakeDatabase[key]))
+    messages: () => Object.keys(fakeDatabase).map((key) => new Message(key, fakeDatabase[key])),
+    ip: ({ text }, request) => text + request.ip,
+
+    randomText: async () => {
+        let url = 'https://jsonplaceholder.typicode.com/posts/';
+
+        const res = await axios.get(url);
+
+        return res.data[Math.floor(Math.random() * 100)].title
+    }
 };
 
 const app = express();
