@@ -3,14 +3,47 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema} = require('graphql');
 
 const schema = buildSchema(`
+    type RandomDie {
+        roll(numRolls: Int!): [Int]
+        numSides: Int
+        rollOnce: Int
+        counter: Int
+        increment: Int
+    }
+    
     type Query {
         hello: String
         quoteOfTheDay: String
         random: Float
         rollThreeDice: [Int]
         rollDice(numDice: Int!, numSides: Int): [Int]
+        getDie(numSides: Int): RandomDie
     }
 `);
+
+class RandomDie {
+    static counter;
+    constructor(numSides = 6) {
+        this.numSides = numSides;
+        // this.counter = 0;
+    }
+
+    increment() {
+        return ++RandomDie.counter
+    }
+
+    rollOnce() {
+        return 1 + Math.floor(Math.random() * this.numSides);
+    }
+
+    roll({ numRolls }) {
+        var output = [];
+        for (var i = 0; i < numRolls; i++) {
+            output.push(this.rollOnce());
+        }
+        return output;
+    }
+}
 
 const root = {
     hello: () => 'Hello world.',
@@ -25,7 +58,8 @@ const root = {
         }
 
         return output
-    }
+    },
+    getDie: ({ numSides }) => new RandomDie(numSides)
 };
 
 const app = express();
