@@ -1,13 +1,27 @@
-const express = require('express');
-const cors = require('cors');
+const { ApolloServer } = require('apollo-server');
 
-const app = express();
+// 1
+const typeDefs = `
+  type Query {
+    info: String!
+  }
+`
 
-app.use(cors());
-app.use(express.static('public'));
+// 2
+const resolvers = {
+    Query: {
+        info: () => `This is the API of a Hackernews Clone`
+    }
+}
 
-app.post('/demo', (req, res) => res.status(200).send({demo: true}));
+// 3
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+})
 
-app.listen(8000, () => {
-    console.log('App is running on port 8000')
-});
+server
+    .listen()
+    .then(({ url }) =>
+        console.log(`Server is running on ${url}`)
+    );
