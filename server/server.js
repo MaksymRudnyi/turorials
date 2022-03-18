@@ -9,6 +9,7 @@ const Mutation = require('./resolvers/Mutation');
 const User = require('./resolvers/User');
 const Link = require('./resolvers/Link');
 const Subscription = require('./resolvers/Subscriptions');
+const Vote = require('./resolvers/Vote');
 
 
 // 2
@@ -17,7 +18,8 @@ const resolvers = {
     Mutation,
     User,
     Link,
-    Subscription
+    Subscription,
+    Vote
 };
 
 // 3
