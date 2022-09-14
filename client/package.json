@@ -6,11 +6,15 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@uiw/react-markdown-editor": "^5.7.0",
+    "@uiw/react-markdown-preview": "^4.1.0",
+    "@uiw/react-md-editor": "^3.18.1",
     "axios": "^0.21.4",
     "express-router": "^0.0.1",
     "js-file-download": "^0.4.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-markdown": "^8.0.3",
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
     "toastify": "^2.0.1",
@@ -39,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "webpack": "^4.44.2"
   }
 }

@@ -1,0 +1,55 @@
+[data-color-mode*='dark'] .md-editor {
+  --color-border-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 0 rgb(255 255 255 / 0%), 0 1px 1px rgb(255 255 255 / 20%);
+}
+[data-color-mode*='light'] .md-editor {
+  --color-border-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgb(16 22 26 / 0%), 0 1px 1px rgb(16 22 26 / 20%);
+}
+.md-editor {
+  color: var(--color-fg-default);
+  box-shadow: var(--color-border-shadow);
+  text-align: left;
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-canvas-subtle);
+}
+.md-editor-content {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+}
+.md-editor-fullscreen .md-editor {
+  border-radius: 0;
+}
+.md-editor-fullscreen {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.md-editor-fullscreen .md-editor-toolbar {
+  border-radius: 0;
+}
+.md-editor-preview {
+  padding: 20px;
+  width: 0%;
+  overflow: hidden;
+  border-left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  background-color: var(--color-canvas-default);
+}
+.md-editor h1 a,
+.md-editor h2 a,
+.md-editor h3 a,
+.md-editor h4 a,
+.md-editor h5 a,
+.md-editor h6 a {
+  display: none;
+}
