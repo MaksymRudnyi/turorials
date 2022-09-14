@@ -1,0 +1,28 @@
+{
+  "name": "toastify",
+  "version": "2.0.1",
+  "description": "Javascript toaster notifications without any dependencies",
+  "main": "dist/build.js",
+  "repository": "git@github.com:GeorgeHanson/toastify.git",
+  "author": "George Hanson <george@georgehanson.co.uk>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "build": "./node_modules/.bin/rollup -c"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.14",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^24.8.0",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-scss": "^0.3.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.3"
+  }
+}

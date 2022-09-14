@@ -1,0 +1,51 @@
+.toastify {
+  font-family: sans-serif;
+  padding: 15px;
+  position: fixed;
+  border-radius: 3px;
+  min-width: 200px;
+  opacity: 0;
+  z-index: 9999; }
+  .toastify.toastify-bottom-right {
+    bottom: 15px;
+    right: 15px; }
+  .toastify.toastify-top-right {
+    top: 15px;
+    right: 15px; }
+  .toastify.toastify-top-left {
+    top: 15px;
+    left: 15px; }
+  .toastify.toastify-bottom-left {
+    bottom: 15px;
+    left: 15px; }
+  .toastify.toastify-success {
+    background: #2ecc71;
+    color: white;
+    border: 1px solid #29b765; }
+  .toastify.toastify-warning {
+    background: #f39c12;
+    color: white;
+    border: 1px solid #e08e0b; }
+  .toastify.toastify-default {
+    background: #333;
+    color: white;
+    border: 1px solid #262626; }
+  .toastify.toastify-error {
+    background: #e74c3c;
+    color: white;
+    border: 1px solid #e43725; }
+  .toastify.toastify-info {
+    background: #3498db;
+    color: white;
+    border: 1px solid #258cd1; }
+  .toastify span {
+    display: block; }
+  .toastify .toastify-title {
+    font-weight: bold;
+    margin-bottom: 10px; }
+  .toastify .toastify-cancel-icon {
+    position: absolute;
+    top: 5px;
+    font-size: 18px;
+    right: 10px;
+    cursor: pointer; }

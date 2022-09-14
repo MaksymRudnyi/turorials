@@ -1,0 +1,76 @@
+.toastify {
+    font-family: sans-serif;
+    padding:15px;
+    position:fixed;
+    border-radius:3px;
+    min-width: 200px;
+    opacity: 0;
+    z-index:9999;
+
+    &.toastify-bottom-right {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    &.toastify-top-right {
+        top: 15px;
+        right: 15px;
+    }
+
+    &.toastify-top-left {
+        top: 15px;
+        left: 15px;
+    }
+
+    &.toastify-bottom-left {
+        bottom: 15px;
+        left: 15px;
+    }
+
+    &.toastify-success {
+        background: #2ecc71;
+        color:white;
+        border:1px solid darken(#2ecc71, 5%);
+    }
+
+    &.toastify-warning {
+        background: #f39c12;
+        color:white;
+        border:1px solid darken(#f39c12, 5%);
+    }
+
+    &.toastify-default {
+        background: #333;
+        color:white;
+        border:1px solid darken(#333, 5%);
+    }
+
+    &.toastify-error {
+        background: #e74c3c;
+        color:white;
+        border:1px solid darken(#e74c3c, 5%);
+    }
+
+    &.toastify-info {
+        background: #3498db;
+        color:white;
+        border:1px solid darken(#3498db, 5%);
+    }
+
+    span {
+        display:block;
+    }
+
+    .toastify-title {
+        font-weight:bold;
+        margin-bottom:10px;
+    }
+
+    .toastify-cancel-icon {
+        position:absolute;
+        top:5px;
+        font-size:18px;
+        right:10px;
+        cursor:pointer;
+    }
+}
