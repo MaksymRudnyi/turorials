@@ -16,6 +16,7 @@ function App() {
     //         })
     // }, []);
 
+
     useEffect(async () => {
         try {
             const data = await axios.get('https://swapi.dev/api/people/');
