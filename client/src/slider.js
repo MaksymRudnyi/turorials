@@ -1,35 +1,32 @@
-import Carousel from 'react-bootstrap/Carousel';
-import React, { useState } from 'react';
-import './slider.css';
+import {Swiper, SwiperSlide} from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y, EffectCube } from 'swiper';
+import 'swiper/swiper-bundle.min.css';
 
-function Slider({ slides }) {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    console.log('selected index: ', selectedIndex)
-    setIndex(selectedIndex);
-  };
-
+export const Slider = ({ slides }) => {
   return (
-    <Carousel activeIndex={index}
-              onSelect={handleSelect}
-              nextIcon={<span aria-hidden="true" className="carousel-control-next-icon changed" />}
+    <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y, EffectCube]}
+      spaceBetween={50}
+      slidesPerView={3}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+      effect={"cube"}
+      cubeEffect={{
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94,
+      }}
     >
       {slides.map((slide) => (
-        <Carousel.Item key={slide.image} interval={slide.interval}>
-          <img
-            className="d-block w-100"
-            src={slide.image}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>{slide.title}</h3>
-            <p>{slide.subTitle}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+        <SwiperSlide key={slide.image}>
+          <img src={slide.image} alt={slide.title}/>
+        </SwiperSlide>
       ))}
-    </Carousel>
-  );
-}
+    </Swiper>
+  )
 
-export default Slider;
+}
