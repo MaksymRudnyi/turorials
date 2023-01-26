@@ -1,0 +1,9 @@
+.carousel .carousel-indicators button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.carousel .carousel-control-next-icon.changed {
+    background-image: url("./arrow-right-solid.svg");
+}
