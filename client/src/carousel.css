@@ -1,0 +1,36 @@
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px 7px rgba(168, 168, 168, 1);
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform .4s ease;
+    /*transform: translateX(calc(-100% - 20px))*/
+    transform: translateX(calc(-80% - 20px))
+}
+
+.carousel-container.sliding {
+    transition: none;
+}
+
+.carousel-container.sliding.next {
+    transform: translateX(0%)
+}
+
+.carousel-container.sliding.prev {
+    /*transform: translateX(calc(2 * (-100% - 20px)))*/
+    transform: translateX(calc(2 * (-80% - 20px)))
+}
+
+.carousel-slot {
+    flex: 1 0 100%;
+    flex-basis: 80%;
+    /*flex-basis: 100%;*/
+    margin-right: 20px;
+}
+
+.carousel-slot img {
+    width: 100%;
+}
