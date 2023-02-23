@@ -1,3 +1,38 @@
-.App {
+.horizontal-slider {
+    width: 100%;
+    max-width: 500px;
+    height: 50px;
+    margin: 100px;
+}
 
+.horizontal-slider .example-track {
+    top: 20px;
+    height: 10px;
+}
+
+.example-track.example-track-0 {
+    background: green;
+}
+
+.example-track.example-track-1 {
+    background: red;
+}
+
+.example-track.example-track-2 {
+    background: grey;
+}
+
+.horizontal-slider .example-thumb {
+    top: 1px;
+    width: 50px;
+    height: 48px;
+    line-height: 38px;
+    border-radius: 50%;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: 5px solid gray;
+    box-sizing: border-box;
 }
