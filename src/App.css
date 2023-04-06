@@ -1,3 +1,72 @@
-.App {
+body, html {
+    padding: 0;
+    margin: 0;
+}
+:root {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+.app {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #cdd9ed;
+}
+
+.slider {
+    width: 100%;
+    height: 2px;
+    background-color: #cdd9ed;
+    margin-top: 60px;
+}
+
+.slider .thumb {
+    width: 23px;
+    height: 23px;
+    cursor: grab;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid #275efe;
+    top: -12px;
+}
+
+.track-1 {
+    background-color: #275efe;
+    height: 2px;
+}
+
+.box {
+    width: 100%;
+    max-width: 320px;
+    padding: 36px 32px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(18, 22, 33, .12);
+}
+
+.values {
+    margin: 0;
+    font-weight: 500;
+    color: #275efe;
+}
+
+small {
+    font-size: 14px;
+    margin-top: 8px;
+    display: block;
+    color: #99a3ba;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #3f4656
+}
+
+h3 span {
+    font-weight: 500;
 }
