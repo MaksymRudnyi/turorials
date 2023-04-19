@@ -1,9 +1,9 @@
 import './App.css';
-
+import FileUploader from './FileUploader'
 function App() {
   return (
     <div className="App">
-      App
+      <FileUploader/>
     </div>
   );
 }
